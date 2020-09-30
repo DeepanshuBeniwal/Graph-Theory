@@ -1,0 +1,54 @@
+import java.util.*;
+
+class Vertex{
+    int data;
+    boolean visited;
+    ArrayList<Vertex> neighbours;
+
+    public Vertex(int value){
+        data = value;
+        visited = false;
+        neighbours = new ArrayList<>();
+    }
+}
+
+public class DFS_Recursive {
+
+    public void dfs(Vertex root){
+        root.visited = true;
+        System.out.print(root.data + " ");
+        for(Vertex v : root.neighbours){
+            if(!v.visited){
+                dfs(v);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Vertex v1 = new Vertex(1);
+        Vertex v2 = new Vertex(2);
+        Vertex v3 = new Vertex(3);
+        Vertex v4 = new Vertex(4);
+        Vertex v5 = new Vertex(5);
+        Vertex v6 = new Vertex(6);
+        Vertex v7 = new Vertex(7);
+        Vertex v8 = new Vertex(8);
+
+        v1.neighbours.add(v2);
+        v1.neighbours.add(v6);
+        v1.neighbours.add(v7);
+        v2.neighbours.add(v3);
+        v2.neighbours.add(v4);
+        v4.neighbours.add(v5);
+        v7.neighbours.add(v8);
+
+        DFS_Recursive object = new DFS_Recursive();
+        object.dfs(v1);
+    }
+}
+
+
+
+------------------------OUTPUT--------------------------
+
+1 2 3 4 5 6 7 8
