@@ -1,1 +1,1 @@
-# Graph-Theory
+# Graph Algorithms (Java)
