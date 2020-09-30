@@ -1,0 +1,52 @@
+import java.util.*;
+
+class Vertex{
+    int data;
+    boolean visited;
+    ArrayList<Vertex> neighbours;
+
+    public Vertex(int value){
+        data = value;
+        visited = false;
+        neighbours = new ArrayList<>();
+    }
+}
+
+public class BFS {
+    public void bfs(Vertex root){
+        Queue<Vertex> queue = new LinkedList<>();
+        root.visited = true;
+        queue.add(root);
+        while(!queue.isEmpty()){
+            Vertex removed_vertex = queue.remove();
+            System.out.print(removed_vertex.data + " ");
+            for(Vertex v : removed_vertex.neighbours){
+                if(!v.visited){
+                    queue.add(v);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        BFS object = new BFS();
+        Vertex v1 = new Vertex(1);
+        Vertex v2 = new Vertex(2);
+        Vertex v3 = new Vertex(3);
+        Vertex v4 = new Vertex(4);
+        Vertex v5 = new Vertex(5);
+
+        v1.neighbours.add(v2);
+        v1.neighbours.add(v4);
+        v4.neighbours.add(v5);
+        v2.neighbours.add(v3);
+
+        object.bfs(v1);
+    }
+}
+
+
+
+-----------------------OUTPUT---------------------------------
+
+1 2 4 3 5 
